@@ -24,8 +24,10 @@
         </activity>
         <activity
             android:name=".RegLogActivity"
-            android:label="@string/title_activity_reg_log">
-        </activity>
+            android:label="@string/title_activity_reg_log"></activity>
+        <activity
+            android:name=".SucceededLogin"
+            android:label="@string/title_activity_succeed_login"></activity>
     </application>
 
 </manifest>
