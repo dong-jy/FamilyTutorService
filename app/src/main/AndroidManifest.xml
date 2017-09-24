@@ -21,21 +21,11 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-            <intent-filter>
-                <action android:name="android.intent.action.VIEW" />
-
-                <category android:name="android.intent.category.DEFAULT" />
-                <category android:name="android.intent.category.BROWSABLE" />
-
-                <data
-                    android:host="djy.com"
-                    android:scheme="http" />
-            </intent-filter>
         </activity>
-        <activity android:name=".RegisterActivity" />
         <activity
-            android:name=".LoginActivity"
-            android:label="@string/title_activity_login"></activity>
+            android:name=".RegLogActivity"
+            android:label="@string/title_activity_reg_log">
+        </activity>
     </application>
 
 </manifest>

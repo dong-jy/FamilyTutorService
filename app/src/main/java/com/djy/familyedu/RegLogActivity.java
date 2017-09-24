@@ -37,21 +37,27 @@ import static android.Manifest.permission.READ_CONTACTS;
 /**
  * A login screen that offers login via email/password.
  */
-public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<Cursor> {
+public class RegLogActivity extends AppCompatActivity implements LoaderCallbacks<Cursor> {
 
     /**
      * Id to identity READ_CONTACTS permission request.
      */
+    private static final int REQUEST_READ_CONTACTS = 0;
 
-//    private static final int REQUEST_READ_CONTACTS = 0;
-
+    /**
+     * A dummy authentication store containing known user names and passwords.
+     * TODO: remove after connecting to a real authentication system.
+     */
+    private static final String[] DUMMY_CREDENTIALS = new String[]{
+            "abc@example.com:123", "bar@example.com:world"
+    };
     /**
      * Keep track of the login task to ensure we can cancel it if requested.
      */
     private UserLoginTask mAuthTask = null;
 
     // UI references.
-    private AutoCompleteTextView mPhoneNumberView;
+    private AutoCompleteTextView mEmailView;
     private EditText mPasswordView;
     private View mProgressView;
     private View mLoginFormView;
@@ -59,9 +65,9 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login);
+        setContentView(R.layout.activity_reg_log);
         // Set up the login form.
-        mPhoneNumberView = (AutoCompleteTextView) findViewById(R.id.phoneNumber);
+        mEmailView = (AutoCompleteTextView) findViewById(R.id.email);
         populateAutoComplete();
 
         mPasswordView = (EditText) findViewById(R.id.password);
@@ -104,7 +110,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             return true;
         }
         if (shouldShowRequestPermissionRationale(READ_CONTACTS)) {
-            Snackbar.make(mPhoneNumberView, R.string.permission_rationale, Snackbar.LENGTH_INDEFINITE)
+            Snackbar.make(mEmailView, R.string.permission_rationale, Snackbar.LENGTH_INDEFINITE)
                     .setAction(android.R.string.ok, new View.OnClickListener() {
                         @Override
                         @TargetApi(Build.VERSION_CODES.M)
@@ -143,11 +149,11 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         }
 
         // Reset errors.
-        mPhoneNumberView.setError(null);
+        mEmailView.setError(null);
         mPasswordView.setError(null);
 
         // Store values at the time of the login attempt.
-        String phoneNumber = mPhoneNumberView.getText().toString();
+        String email = mEmailView.getText().toString();
         String password = mPasswordView.getText().toString();
 
         boolean cancel = false;
@@ -160,14 +166,14 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             cancel = true;
         }
 
-        // Check for a valid phoneNumber address.
-        if (TextUtils.isEmpty(phoneNumber)) {
-            mPhoneNumberView.setError(getString(R.string.error_field_required));
-            focusView = mPhoneNumberView;
+        // Check for a valid email address.
+        if (TextUtils.isEmpty(email)) {
+            mEmailView.setError(getString(R.string.error_field_required));
+            focusView = mEmailView;
             cancel = true;
-        } else if (!isEmailValid(phoneNumber)) {
-            mPhoneNumberView.setError(getString(R.string.error_invalid_email));
-            focusView = mPhoneNumberView;
+        } else if (!isEmailValid(email)) {
+            mEmailView.setError(getString(R.string.error_invalid_email));
+            focusView = mEmailView;
             cancel = true;
         }
 
@@ -179,19 +185,19 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             // Show a progress spinner, and kick off a background task to
             // perform the user login attempt.
             showProgress(true);
-            mAuthTask = new UserLoginTask(phoneNumber, password);
+            mAuthTask = new UserLoginTask(email, password);
             mAuthTask.execute((Void) null);
         }
     }
 
-    private boolean isEmailValid(String phoneNumber) {
+    private boolean isEmailValid(String email) {
         //TODO: Replace this with your own logic
-        return phoneNumber.length() == 11 && phoneNumber.startsWith("1");
+        return email.contains("@");
     }
 
     private boolean isPasswordValid(String password) {
         //TODO: Replace this with your own logic
-        return password.length() >= 8;
+        return password.length() > 4;
     }
 
     /**
@@ -267,10 +273,10 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
     private void addEmailsToAutoComplete(List<String> emailAddressCollection) {
         //Create adapter to tell the AutoCompleteTextView what to show in its dropdown list.
         ArrayAdapter<String> adapter =
-                new ArrayAdapter<>(LoginActivity.this,
+                new ArrayAdapter<>(RegLogActivity.this,
                         android.R.layout.simple_dropdown_item_1line, emailAddressCollection);
 
-        mPhoneNumberView.setAdapter(adapter);
+        mEmailView.setAdapter(adapter);
     }
 
 
@@ -290,17 +296,17 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
      */
     public class UserLoginTask extends AsyncTask<Void, Void, Boolean> {
 
-        private final String mPhoneNumber;
+        private final String mEmail;
         private final String mPassword;
 
-        UserLoginTask(String phoneNumber, String password) {
-            mPhoneNumber = phoneNumber;
+        UserLoginTask(String email, String password) {
+            mEmail = email;
             mPassword = password;
         }
 
         @Override
         protected Boolean doInBackground(Void... params) {
-            // Authentication against a network service.
+            // TODO: attempt authentication against a network service.
 
             try {
                 // Simulate network access.
@@ -309,17 +315,15 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
                 return false;
             }
 
-            // Get Password from server and verify
-            String serverPassword;
-            serverPassword = sql.getPassWord(mPhoneNumber);
-            // Account exists, return true if the password matches.
-            if (serverPassword != null) {
-                return serverPassword.equals(mPassword);
+            for (String credential : DUMMY_CREDENTIALS) {
+                String[] pieces = credential.split(":");
+                if (pieces[0].equals(mEmail)) {
+                    // Account exists, return true if the password matches.
+                    return pieces[1].equals(mPassword);
+                }
             }
 
-            // register the new account here.
-//            sql.put(mPhoneNumber, hash(mPassword));
-
+            // TODO: register the new account here.
             return true;
         }
 
