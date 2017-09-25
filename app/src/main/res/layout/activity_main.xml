@@ -77,7 +77,7 @@
         android:layout_marginTop="144dp"
         android:fontFamily="cursive"
         android:shadowColor="@android:color/background_dark"
-        android:text="优家教"
+        android:text="爱家教"
         android:textAlignment="center"
         android:textAppearance="@style/TextAppearance.AppCompat.Headline"
         android:textColor="@android:color/holo_orange_light"

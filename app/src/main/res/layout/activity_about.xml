@@ -17,11 +17,11 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="36dp"
-        android:editable="false"
+        android:inputType="none"
         android:lines="2"
         android:maxLines="10"
         android:selectAllOnFocus="false"
         android:singleLine="false"
-        android:text="优家教\u00ae  2017"
+        android:text="爱家教\u00ae  2017"
         android:textAlignment="center" />
 </LinearLayout>
