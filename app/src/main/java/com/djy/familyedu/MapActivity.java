@@ -39,6 +39,8 @@ public class MapActivity extends AppCompatActivity implements CompoundButton.OnC
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+        requestWindowFeature(getWindow().FEATURE_NO_TITLE);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_map);
         mapView = (MapView) findViewById(R.id.map_view);
@@ -89,13 +91,13 @@ public class MapActivity extends AppCompatActivity implements CompoundButton.OnC
     public void setMyLocationStyle() {
         MyLocationStyle myLocationStyle = new MyLocationStyle();
         myLocationStyle.interval(1000);
-        myLocationStyle.showMyLocation(true);
-        myLocationStyle.myLocationIcon(BitmapDescriptorFactory.fromResource(
-                R.drawable.locate_location_button));
-        myLocationStyle.anchor(0, 1);
-        myLocationStyle.strokeColor(Color.MAGENTA);
-        myLocationStyle.radiusFillColor(Color.CYAN);
-        myLocationStyle.strokeWidth(5);
+//        myLocationStyle.showMyLocation(true);
+//        myLocationStyle.myLocationIcon(BitmapDescriptorFactory.fromResource(
+//                R.drawable.locate_location_button));
+//        myLocationStyle.anchor(0, 1);
+//        myLocationStyle.strokeColor(Color.MAGENTA);
+//        myLocationStyle.radiusFillColor(Color.CYAN);
+//        myLocationStyle.strokeWidth(5);
         map.setMyLocationStyle(myLocationStyle.myLocationType(
                 MyLocationStyle.LOCATION_TYPE_LOCATION_ROTATE_NO_CENTER));
         map.setMyLocationEnabled(true);
@@ -120,6 +122,7 @@ public class MapActivity extends AppCompatActivity implements CompoundButton.OnC
         mapLocationClientOption.setMockEnable(true);
         mapLocationClientOption.setInterval(1000);
         mapLocationClient.startLocation();
+
     }
 
 
@@ -127,21 +130,23 @@ public class MapActivity extends AppCompatActivity implements CompoundButton.OnC
         if (locationChangedListener != null && mapLocation != null) {
             locationChangedListener.onLocationChanged(mapLocation);
             if (mapLocation.getErrorCode() == 0) {
-                mapLocation.getLocationType();//获取当前定位结果来源，如网络定位结果，详见定位类型表
-                mapLocation.getLatitude();//获取经度
-                mapLocation.getLongitude();//获取纬度;
+                mapLocation.getLocationType();
+                LatLng currentPosition = new LatLng(mapLocation.getLatitude(), mapLocation.getLongitude());//获取纬度;
+
                 mapLocation.getAccuracy();//获取精度信息
                 SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
                 Date date = new Date(mapLocation.getTime());
                 df.format(date);//定位时间
-                mapLocation.getAddress();//地址，如果option中设置isNeedAddress为false，则没有此结果
-                mapLocation.getCountry();//国家信息
-                mapLocation.getProvince();//省信息
-                mapLocation.getCity();//城市信息
-                mapLocation.getDistrict();//城区信息
-                mapLocation.getRoad();//街道信息
-                mapLocation.getCityCode();//城市编码
-                mapLocation.getAdCode();//地区编码
+//                map.addMarker(new MarkerOptions().position(currentPosition).title("Lastest position"));
+                map.moveCamera(CameraUpdateFactory.newLatLng(currentPosition));
+//                mapLocation.getAddress();//地址，如果option中设置isNeedAddress为false，则没有此结果
+//                mapLocation.getCountry();//国家信息
+//                mapLocation.getProvince();//省信息
+//                mapLocation.getCity();//城市信息
+//                mapLocation.getDistrict();//城区信息
+//                mapLocation.getRoad();//街道信息
+//                mapLocation.getCityCode();//城市编码
+//                mapLocation.getAdCode();//地区编码
             } else {
                 //显示错误信息ErrCode是错误码，errInfo是错误信息，详见错误码表。
                 Log.e(TAG, "location Error, ErrCode:"

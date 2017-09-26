@@ -25,7 +25,7 @@ android {
         applicationId "com.djy.familyedu"
         minSdkVersion 17
         targetSdkVersion 26
-        versionCode 333
+        versionCode 2333
         versionName "1.1.1.9"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         vectorDrawables.useSupportLibrary = true
