@@ -1,29 +1,50 @@
 apply plugin: 'com.android.application'
 
 android {
+    signingConfigs {
+        family_edu_key {
+            keyAlias 'family_edu'
+            storeFile file('/home/djy-ubuntu16/AndroidKeyStore/signingkeys.jks')
+            storePassword 'djy1994!'
+            keyPassword 'djy1994!'
+        }
+    }
     compileSdkVersion 26
     buildToolsVersion "26.0.1"
+//    appReleaseConfig {
+//        applicationId "com.djy.familyedu"
+//        minSdkVersion 17
+//        targetSdkVersion 26
+//        versionCode 333
+//        versionName "1.1.1.9"
+//        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+//        vectorDrawables.useSupportLibrary = true
+//        ndk { abiFilters "armeabi-v7a", "arm64-v8a", "x86_64" }
+//    }
     defaultConfig {
         applicationId "com.djy.familyedu"
         minSdkVersion 17
         targetSdkVersion 26
         versionCode 333
-        versionName "1.1.0.9"
+        versionName "1.1.1.9"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         vectorDrawables.useSupportLibrary = true
+        ndk { abiFilters "x86", "armeabi-v7a", "arm64-v8a" }
     }
     buildTypes {
         release {
-            minifyEnabled true
+            minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.family_edu_key
         }
+    }
+    productFlavors {
     }
 }
 
 dependencies {
     implementation 'com.android.support:support-vector-drawable:26.1.0'
     implementation 'com.android.support:support-v4:26.1.0'
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
     androidTestImplementation('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
@@ -31,10 +52,7 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     implementation 'com.android.support.constraint:constraint-layout:1.0.2'
     implementation 'com.android.support:design:26.1.0'
-    implementation fileTree(include: ['*.jar'], dir: 'libs')
-
-//    implementation 'com.amap.api:3dmap:latest.integration'
-//    implementation 'com.amap.api:navi-3dmap:latest.integration'
-//    implementation 'com.amap.api:search:latest.integration'
-//    implementation 'com.amap.api:location:latest.integration'
+    implementation 'com.amap.api:navi-3dmap:latest.integration'
+    implementation 'com.amap.api:search:latest.integration'
+    implementation 'com.amap.api:location:latest.integration'
 }

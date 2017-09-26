@@ -43,7 +43,7 @@ public class MainActivity extends AppCompatActivity {
 //    //声明AMapLocationClient类对象
 //    public AMapLocationClient mLocationClient = null;
 //    //声明定位回调监听器
-//    public AMapLocationListener mLocationListener = new AMapLocationListener() {
+//    public AMapLocationListener mLocationChangeListener = new AMapLocationListener() {
 //        @Override
 //        public void onLocationChanged(AMapLocation aMapLocation) {
 //            if (aMapLocation != null) {
@@ -82,5 +82,5 @@ public class MainActivity extends AppCompatActivity {
 ////    //初始化定位
 ////    mLocationClient = new AMapLocationClient(getApplicationContext());
 ////    //设置定位回调监听
-////    mLocationClient.setLocationListener(mLocationListener);
+////    mLocationClient.setLocationListener(mLocationChangeListener);
 }

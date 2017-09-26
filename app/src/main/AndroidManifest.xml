@@ -54,7 +54,7 @@
             android:name=".AboutActivity"
             android:label="关于"/>
         <activity
-            android:name=".AMapActivity"
+            android:name=".MapActivity"
             android:label="@string/title_activity_amap"/>
     </application>
 

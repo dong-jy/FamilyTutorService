@@ -15,7 +15,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 //import com.amap.api.location.AMapLocation;
-//import com.amap.api.location.AMapLocationClient;
+//import com.amap.api.location.MapActivity;
 //import com.amap.api.location.AMapLocationListener;
 
 public class SucceededLogin extends AppCompatActivity {
@@ -131,7 +131,7 @@ public class SucceededLogin extends AppCompatActivity {
                 startActivity(new Intent(SucceededLogin.this, AboutActivity.class));
                 return true;
             case R.id.menu_amap:
-                startActivity(new Intent(this, AMapActivity.class));
+                startActivity(new Intent(this, MapActivity.class));
         }
         return false;
     }
