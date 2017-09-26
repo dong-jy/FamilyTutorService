@@ -40,10 +40,11 @@ public class MapActivity extends AppCompatActivity implements CompoundButton.OnC
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
-        requestWindowFeature(getWindow().FEATURE_NO_TITLE);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_map);
         mapView = (MapView) findViewById(R.id.map_view);
+
+//        requestWindowFeature(getWindow().FEATURE_NO_TITLE);
         mapView.onCreate(savedInstanceState);
 
         initMapView();
