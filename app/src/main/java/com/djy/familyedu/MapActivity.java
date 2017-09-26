@@ -1,7 +1,6 @@
 package com.djy.familyedu;
 
 import android.Manifest;
-import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.ActivityCompat;
@@ -17,10 +16,10 @@ import com.amap.api.maps.AMap;
 import com.amap.api.maps.CameraUpdateFactory;
 import com.amap.api.maps.LocationSource;
 import com.amap.api.maps.MapView;
-import com.amap.api.maps.model.BitmapDescriptorFactory;
 import com.amap.api.maps.model.LatLng;
 import com.amap.api.maps.model.MarkerOptions;
 import com.amap.api.maps.model.MyLocationStyle;
+import com.amap.api.services.poisearch.PoiSearch;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -32,10 +31,11 @@ public class MapActivity extends AppCompatActivity implements CompoundButton.OnC
     protected static final String TAG = "MapActivity";
 
     private MapView mapView;
-    private AMap map;
+    private AMap aMap;
     private AMapLocationClient mapLocationClient;
     private LocationSource.OnLocationChangedListener locationChangedListener;
     private AMapLocationClientOption mapLocationClientOption;
+    private static int i = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,12 +55,17 @@ public class MapActivity extends AppCompatActivity implements CompoundButton.OnC
     }
 
     private void initMapView() {
-        if (map == null) {
-            map = mapView.getMap();
-            LatLng haiKou = new LatLng(19.9816509, 110.3330756);
-            map.addMarker(new MarkerOptions().position(haiKou).title("Marker in hmc"));
-            map.moveCamera(CameraUpdateFactory.newLatLng(haiKou));
-            map.setMapType(AMap.MAP_TYPE_NORMAL);
+        if (aMap == null) {
+            aMap = mapView.getMap();
+            if (i > 0) {
+                LatLng haiKou = new LatLng(19.9816509, 110.3330756);
+                aMap.addMarker(new MarkerOptions().position(haiKou).title("出生地"));
+                aMap.moveCamera(CameraUpdateFactory.newLatLng(haiKou));
+                i--;
+            }
+            aMap.setMapType(AMap.MAP_TYPE_NORMAL);
+            aMap.getUiSettings().setCompassEnabled(true);
+            aMap.showBuildings(true);
         }
     }
 
@@ -99,19 +104,19 @@ public class MapActivity extends AppCompatActivity implements CompoundButton.OnC
 //        myLocationStyle.strokeColor(Color.MAGENTA);
 //        myLocationStyle.radiusFillColor(Color.CYAN);
 //        myLocationStyle.strokeWidth(5);
-        map.setMyLocationStyle(myLocationStyle.myLocationType(
+        aMap.setMyLocationStyle(myLocationStyle.myLocationType(
                 MyLocationStyle.LOCATION_TYPE_LOCATION_ROTATE_NO_CENTER));
-        map.setMyLocationEnabled(true);
-        map.setMyLocationStyle(myLocationStyle);
+        aMap.setMyLocationEnabled(true);
+        aMap.setMyLocationStyle(myLocationStyle);
     }
 
     private void startClientLocation() {
-        map.setLocationSource(this);
-        map.getUiSettings().setMyLocationButtonEnabled(true);
+        aMap.setLocationSource(this);
+        aMap.getUiSettings().setMyLocationButtonEnabled(true);
 
-        map.setTrafficEnabled(true);
+        aMap.setTrafficEnabled(true);
 
-        map.setMyLocationEnabled(true);
+        aMap.setMyLocationEnabled(true);
         mapLocationClient = new AMapLocationClient(getApplicationContext());
         mapLocationClient.setLocationListener(this);
 
@@ -138,8 +143,8 @@ public class MapActivity extends AppCompatActivity implements CompoundButton.OnC
                 SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
                 Date date = new Date(mapLocation.getTime());
                 df.format(date);//定位时间
-//                map.addMarker(new MarkerOptions().position(currentPosition).title("Lastest position"));
-                map.moveCamera(CameraUpdateFactory.newLatLng(currentPosition));
+//                aMap.addMarker(new MarkerOptions().position(currentPosition).title("Lastest position"));
+                aMap.moveCamera(CameraUpdateFactory.newLatLng(currentPosition));
 //                mapLocation.getAddress();//地址，如果option中设置isNeedAddress为false，则没有此结果
 //                mapLocation.getCountry();//国家信息
 //                mapLocation.getProvince();//省信息
@@ -211,5 +216,20 @@ public class MapActivity extends AppCompatActivity implements CompoundButton.OnC
     public void deactivate() {
 
     }
+
+//    protected void doSearchQuery() {
+//        keyWord = mSearchText.getText().toString().trim();
+//        currentPage = 0;
+//        query = new PoiSearch.Query(keyword, "", "海口市");
+//        query.setPageSize(12);
+//        query.setPageNum(currentPage);
+//
+//        if (lp != null) {
+//            poiSearch = new PoiSearch(this, query);
+//            poiSearch.setOnPoiSearchListener(this);
+//            poiSearch.setBound(new PoiSearch.SearchBound(lp, 3500, true));
+//            poiSearch.searchPOIAsync();
+//        }
+//    }
 }
 
