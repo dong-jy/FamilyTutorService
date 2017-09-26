@@ -79,4 +79,5 @@
     <string name="menu_settings">设置</string>
     <string name="title_activity_amap">Map</string>
     <string name="menu_map">地图</string>
+    <string name="title_activity_main">欢迎</string>
 </resources>

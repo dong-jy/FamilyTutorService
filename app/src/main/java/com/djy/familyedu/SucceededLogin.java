@@ -14,9 +14,9 @@ import android.view.MenuItem;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.amap.api.location.AMapLocation;
-import com.amap.api.location.AMapLocationClient;
-import com.amap.api.location.AMapLocationListener;
+//import com.amap.api.location.AMapLocation;
+//import com.amap.api.location.AMapLocationClient;
+//import com.amap.api.location.AMapLocationListener;
 
 public class SucceededLogin extends AppCompatActivity {
 
