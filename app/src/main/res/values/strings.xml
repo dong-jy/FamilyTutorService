@@ -1,20 +1,20 @@
 <resources>
-    <string name="app_name">爱家教</string>
-    <string name="title_activity_reg_log">注册/登录</string>
+    <string name="app_name" translatable="false">爱家教</string>
+    <string name="title_activity_reg_log" translatable="false">注册/登录</string>
 
     <!-- Strings related to login -->
-    <string name="prompt_email">手机号码</string>
-    <string name="prompt_password">密码</string>
-    <string name="action_sign_in">注册/登录</string>
-    <string name="action_sign_in_short">注册/登录</string>
+    <string name="prompt_mobile_number" translatable="false">手机号码</string>
+    <string name="prompt_password" translatable="false">密码</string>
+    <string name="action_sign_in" translatable="false">注册/登录</string>
+    <string name="action_sign_in_short" translatable="false">注册/登录</string>
     <string name="error_invalid_email">手机号码格式错误</string>
-    <string name="error_invalid_password">密码太短了，至少输入8位</string>
+    <string name="error_invalid_password">密码太短了，至少输入6位</string>
     <string name="error_incorrect_password">密码错误</string>
     <string name="error_field_required">这里尚未填写</string>
     <string name="permission_rationale">请求通讯录权限</string>
     <string name="title_activity_succeed_login">欢迎</string>
     <string name="title_home">主页</string>
-    <string name="title_dashboard">内容</string>
+    <string name="title_dashboard" translatable="false">广场</string>
     <string name="title_notifications">提醒</string>
     <string name="title_activity_settings">设置</string>
 
@@ -64,20 +64,45 @@
         <item>-1</item>
     </string-array>
 
-    <string name="pref_title_system_sync_settings">System sync settings</string>
+    <string name="pref_title_system_sync_settings" translatable="false">System sync settings</string>
 
     <!-- Example settings for Notifications -->
-    <string name="pref_header_notifications">Notifications</string>
+    <string name="pref_header_notifications" translatable="false">Notifications</string>
 
-    <string name="pref_title_new_message_notifications">New message notifications</string>
+    <string name="pref_title_new_message_notifications" translatable="false">New message notifications</string>
 
-    <string name="pref_title_ringtone">Ringtone</string>
-    <string name="pref_ringtone_silent">Silent</string>
+    <string name="pref_title_ringtone" translatable="false">Ringtone</string>
+    <string name="pref_ringtone_silent" translatable="false">Silent</string>
 
     <string name="menu_about">关于爱家教</string>
     <string name="menu_settings">设置</string>
     <string name="title_activity_amap">地图</string>
     <string name="menu_map">地图</string>
+    <string name="menu_log_out">注销</string>
+
     <string name="title_activity_main">欢迎</string>
     <string name="pref_title_vibrate">震动提示</string>
+    <string name="UserPhoto">user photo</string>
+    <string name="no_data">没有更多数据了</string>
+    <string name="title_activity_parent_login">家长注册</string>
+    <string name="username">用户名</string>
+    <string name="teacher_entry">我是教员</string>
+    <string name="parent_entry">我是家长</string>
+    <string name="logo">爱家教</string>
+    <string name="title_activity_teacher_login">教员登录/注册</string>
+    <string name="action_logout">退出账户</string>
+    <string name="teacher_login_title">教员注册/登录</string>
+    <string name="prompt_username">用户名</string>
+    <string name="teacher_register_entry">教员注册</string>
+    <string name="teacher_login_entry">教员登录</string>
+    <string name="parent_register_entry">家长注册</string>
+    <string name="parent_login_entry">家长登录</string>
+    <string name="teacher_register_title">教员注册</string>
+    <string name="parent_register_title">家长注册</string>
+    <string name="error_invalid_mobile_number">请输入正确的手机号</string>
+    <string name="parent_login_title">家长登录</string>
+    <string name="action_register">注册</string>
+    <string name="action_login">登录</string>
+    <string name="parent_sign_up_title">家长注册</string>
+    <string name="skip_now">先进去逛逛</string>
 </resources>

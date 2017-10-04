@@ -2,7 +2,7 @@
 <resources>
     <string name="app_name">iTutor</string>
     <string name="title_activity_reg_log">Register/Login</string>
-    <string name="prompt_email">Mobile No.</string>
+    <string name="prompt_mobile_number">Mobile No.</string>
     <string name="prompt_password">Password</string>
     <string name="pref_ringtone_silent">Vibrate</string>
     <string name="pref_title_system_sync_settings">System sync settings</string>

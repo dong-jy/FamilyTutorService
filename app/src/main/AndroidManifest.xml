@@ -10,7 +10,6 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
-
     <uses-permission android:name="android.permission.GET_ACCOUNTS" />
     <uses-permission android:name="android.permission.READ_PROFILE" />
     <uses-permission android:name="android.permission.READ_CONTACTS" />
@@ -20,30 +19,42 @@
     <uses-permission android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS" />
 
     <application
+        android:name=".AVOSInit"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <service android:name="com.avos.avoscloud.PushService"/>
+        <receiver android:name="com.avos.avoscloud.AVBroadcastReceiver">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED"/>
+                <action android:name="android.intent.action.USER_PRESENT"/>
+                <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
+            </intent-filter>
+        </receiver>
+        <!-- 实时通信模块、推送 END -->
 
+        <!-- 反馈组件（需要加入以下声明）START -->
+        <activity
+            android:name="com.avos.avoscloud.feedback.ThreadActivity" >
+        </activity>
+        <!-- 反馈组件 END -->
         <meta-data
             android:name="com.amap.api.v2.apikey"
             android:value="key">
-            87ad975139d47217864ca8dc0899e670
-        </meta-data>
+            87ad975139d47217864ca8dc0899e670</meta-data>
 
         <activity
-            android:name=".MainActivity"
+            android:name=".ChooseEntryActivity"
             android:label="@string/title_activity_main">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".RegLogActivity"
-            android:label="@string/title_activity_reg_log" />
         <activity
             android:name=".SucceededLogin"
             android:label="@string/title_activity_succeed_login" />
@@ -52,10 +63,14 @@
             android:label="@string/title_activity_settings" />
         <activity
             android:name=".AboutActivity"
-            android:label="关于"/>
+            android:label="关于" />
         <activity
             android:name=".MapActivity"
-            android:label="@string/title_activity_amap"/>
+            android:label="@string/title_activity_amap" />
+        <activity
+            android:name=".ParentLogInActivity"
+            android:label="@string/title_activity_parent_login"/>
+        <activity android:name=".ParentSignUpActivity" />
     </application>
 
 </manifest>
