@@ -99,7 +99,7 @@ public class TeacherSignUpActivity extends AppCompatActivity {
                 public void done(AVException e) {
                     if (e == null) {
                         TeacherSignUpActivity.this.finish();
-                        startActivity(new Intent(TeacherSignUpActivity.this, SucceededLogin.class));
+                        startActivity(new Intent(TeacherSignUpActivity.this, SucceededLoginActivity.class));
                     } else {
                         showProgress(false);
                         Toast.makeText(TeacherSignUpActivity.this, e.getMessage(), Toast.LENGTH_SHORT).show();

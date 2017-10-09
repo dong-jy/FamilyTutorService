@@ -1,21 +1,20 @@
 package com.djy.familyedu;
 
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 
 import com.avos.avoscloud.AVUser;
 
 // Log tag
-import android.app.ListActivity;
 import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.view.MenuItem;
-import android.widget.TextView;
+import android.view.View;
 
-public class SucceededLogin extends AppCompatActivity {
-
+public class SucceededLoginActivity extends AppCompatActivity {
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -57,19 +56,19 @@ public class SucceededLogin extends AppCompatActivity {
         // as you specify a parent activity in AndroidManifest.xml.
         switch (item.getItemId()) {
             case R.id.menu_settings:
-                startActivity(new Intent(SucceededLogin.this, SettingsActivity.class));
+                startActivity(new Intent(SucceededLoginActivity.this, SettingsActivity.class));
                 return true;
             case R.id.menu_about:
-                startActivity(new Intent(SucceededLogin.this, AboutActivity.class));
+                startActivity(new Intent(SucceededLoginActivity.this, AboutActivity.class));
                 return true;
             case R.id.menu_amap:
-                startActivity(new Intent(SucceededLogin.this, MapActivity.class));
+                startActivity(new Intent(SucceededLoginActivity.this, MapActivity.class));
                 return true;
             case R.id.menu_log_out:
                 AVUser.getCurrentUser().logOut();
 //                AVUser currentUser = AVUser.getCurrentUser();
-                startActivity(new Intent(SucceededLogin.this, ChooseEntryActivity.class));
-                SucceededLogin.this.finish();
+                startActivity(new Intent(SucceededLoginActivity.this, ChooseEntryActivity.class));
+                SucceededLoginActivity.this.finish();
         }
         return false;
     }

@@ -87,7 +87,7 @@ public class TeacherLogInActivity extends AppCompatActivity {
                 public void done(AVUser avUser, AVException e) {
                     if (e == null) {
                         TeacherLogInActivity.this.finish();
-                        startActivity(new Intent(TeacherLogInActivity.this, SucceededLogin.class));
+                        startActivity(new Intent(TeacherLogInActivity.this, SucceededLoginActivity.class));
                     } else {
                         showProgress(false);
                         Toast.makeText(TeacherLogInActivity.this, e.getMessage(), Toast.LENGTH_SHORT).show();

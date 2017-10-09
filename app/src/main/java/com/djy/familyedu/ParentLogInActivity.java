@@ -87,7 +87,7 @@ public class ParentLogInActivity extends AppCompatActivity {
                 public void done(AVUser avUser, AVException e) {
                     if (e == null) {
                         ParentLogInActivity.this.finish();
-                        startActivity(new Intent(ParentLogInActivity.this, SucceededLogin.class));
+                        startActivity(new Intent(ParentLogInActivity.this, SucceededLoginActivity.class));
                     } else {
                         showProgress(false);
                         Toast.makeText(ParentLogInActivity.this, e.getMessage(), Toast.LENGTH_SHORT).show();

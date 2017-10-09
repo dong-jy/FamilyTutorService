@@ -64,7 +64,7 @@ public class ChooseEntryActivity extends AppCompatActivity {
         final Button skipButton = findViewById(R.id.button_skip);
         skipButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                startActivity(new Intent(ChooseEntryActivity.this, SucceededLogin.class));
+                startActivity(new Intent(ChooseEntryActivity.this, SucceededLoginActivity.class));
             }
         });
     }

@@ -50,14 +50,7 @@
             android:name=".ChooseEntryActivity"
             android:label="@string/title_activity_main">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
-        <activity
-            android:name=".SucceededLogin"
-            android:label="@string/title_activity_succeed_login" />
+                <action android:name="android.intent.action.MAIN" /> <category android:name="android.intent.category.LAUNCHER" /> </intent-filter> </activity> <activity android:name=".SucceededLoginActivity" android:label="@string/title_activity_succeed_login" />
         <activity
             android:name=".SettingsActivity"
             android:label="@string/title_activity_settings" />
@@ -71,6 +64,6 @@
             android:name=".ParentLogInActivity"
             android:label="@string/title_activity_parent_login"/>
         <activity android:name=".ParentSignUpActivity" />
-    </application>
 
+    </application>
 </manifest>

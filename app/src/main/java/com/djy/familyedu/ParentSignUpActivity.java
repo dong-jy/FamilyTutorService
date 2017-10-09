@@ -113,7 +113,7 @@ public class ParentSignUpActivity extends AppCompatActivity {
                 public void done(AVException e) {
                     if (e == null) {
                         Toast.makeText(ParentSignUpActivity.this, "注册成功", LENGTH_SHORT).show();
-                        startActivity(new Intent(ParentSignUpActivity.this, SucceededLogin.class));
+                        startActivity(new Intent(ParentSignUpActivity.this, SucceededLoginActivity.class));
                         ParentSignUpActivity.this.finish();
 
                     } else {
